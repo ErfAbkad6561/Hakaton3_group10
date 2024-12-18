@@ -1,0 +1,7 @@
+psycopg2-binary
+nltk
+summarizer
+transformers
+torch
+bert-extractive-summarizer
+pymystem3

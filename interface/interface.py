@@ -1,3 +1,4 @@
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QTableWidget, QTableWidgetItem,
     QPushButton, QLabel, QLineEdit, QTextEdit, QComboBox
@@ -155,7 +156,25 @@ class DatabaseTableEditor(QMainWindow):
 
         if rows:
             self.table_object_main.setCurrentCell(0, 0)
-
+        
+        # Установка стилей с округлением углов и жирной рамкой
+        self.table_object_main.setStyleSheet("""
+            QHeaderView::section {
+                background-color: #4CAF50;   /* Цвет фона заголовка */
+                color: white;                 /* Цвет текста заголовка */
+                font-weight: bold;            /* Жирный шрифт заголовка */
+            }
+            QTableWidget {
+                font-size: 14px;              /* Размер шрифта */
+                border: 2px solid #4CAF50;    /* Жирная рамка темно-красного цвета */
+                border-radius: 10px;          /* Округленные углы */
+                padding: 5px;                 /* Отступ внутри таблицы */
+            }
+            QTableWidget QTableCornerButton {
+                background-color: #4CAF50;    /* Цвет угла таблицы */
+            }
+        """)  # Установка стилей с округлением углов и рамкой
+        
     def loadTable_object_main_where(self):
         """
         Формирует SQL-условие WHERE на основе введенных фильтров.
@@ -208,9 +227,30 @@ class DatabaseTableEditor(QMainWindow):
 
         self.table_otziv.setFixedSize(1180, 400)  # Устанавливаем ширину таблицы
 
+        # Дополнительные визуальные настройки
+        self.table_otziv.setAlternatingRowColors(True)  # Чередующиеся цвета строк
+
+        # Применение стилей
+        self.table_otziv.setStyleSheet("""
+            QHeaderView::section {
+                background-color: #4CAF50;  /* Цвет фона заголовка */
+                color: white;                /* Цвет текста заголовка */
+                font-weight: bold;           /* Жирный шрифт заголовка */
+            }
+            QTableWidget {
+                font-size: 14px;            /* Размер шрифта */
+                border: none;               /* Убираем рамку */
+                selection-background-color: #A5D6A7; /* Цвет фона при выборе строк */
+                border: 2px solid #4CAF50;    /* Жирная рамка темно-красного цвета */
+                border-radius: 10px;          /* Округленные углы */
+                padding: 5px;                 /* Отступ внутри таблицы */
+            }
+            QTableWidget QTableCornerButton {
+                background-color: #4CAF50;  /* Цвет угла таблицы */
+            }
+        """)
         if rows:
             self.table_otziv.setCurrentCell(0, 0)
-
 
     def loadTable_rubrics(self):
         """
@@ -233,6 +273,21 @@ class DatabaseTableEditor(QMainWindow):
         # Устанавливаем высоту таблицы
         self.table_rubrics.setFixedHeight(400)  # Установить фиксированную высоту таблицы
 
+        # Применение стилей для красного цвета текста
+        self.table_rubrics.setStyleSheet("""
+            QTableWidget {
+                color: black;                /* Установка красного цвета текста */
+                font-size: 14px;          /* Размер шрифта */
+                border: 2px solid red;    /* Жирная рамка темно-красного цвета */
+                border-radius: 10px;          /* Округленные углы */
+                padding: 5px;                 /* Отступ внутри таблицы */
+            }
+            QHeaderView::section {
+                background-color: red; /* Цвет фона заголовка при необходимости */
+                color: white;               /* Цвет текста заголовка */
+                font-weight: bold;          /* Жирный шрифт для заголовка */
+            }
+        """)
     def table_object_main_cell_changed(self, currentRow, currentColumn):
         """
         Обрабатывает изменение текущей ячейки в таблице объектов.

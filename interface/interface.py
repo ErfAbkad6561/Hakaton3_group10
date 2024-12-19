@@ -30,7 +30,8 @@ class DatabaseTableEditor(QMainWindow):
         self.load_initial_data()
 
     def initUI(self):
-        self.setFixedSize(1500, 1060)  # Задаем фиксированный размер окна
+        # Или просто используйте resize() для установки начального размера
+        self.resize(1500, 950)  # Начальный размер окна
         self.setWindowTitle('Отзывы')
 
         # Создаем виджет таблицы для отображения объектов
@@ -205,7 +206,7 @@ class DatabaseTableEditor(QMainWindow):
         self.table_otziv.setColumnWidth(0, 70)  # Рейтинг
         self.table_otziv.setColumnWidth(1, 1000)  # Отзыв
 
-        self.table_otziv.setFixedWidth(1200)  # Устанавливаем фиксированную ширину таблицы
+        self.table_otziv.setFixedSize(1180, 400)  # Устанавливаем ширину таблицы
 
         if rows:
             self.table_otziv.setCurrentCell(0, 0)
@@ -228,6 +229,9 @@ class DatabaseTableEditor(QMainWindow):
         rows = self.cur.fetchall()
         self.populate_table(self.table_rubrics, rows, ['Рубрика'])
         self.table_rubrics.setColumnWidth(0, 250)  # Устанавливаем ширину 
+
+        # Устанавливаем высоту таблицы
+        self.table_rubrics.setFixedHeight(400)  # Установить фиксированную высоту таблицы
 
     def table_object_main_cell_changed(self, currentRow, currentColumn):
         """

@@ -44,7 +44,11 @@
 
 ![Описание](visual/datа.png)
 
-3. Элемент с возможностью выбора нейросети для суммаризации, и также регулирование степени сжатия текста:
+3. Элемент с возможностью выбора нейросети для суммаризации:
+  - 'gpt' - 'sberbank-ai/rugpt3small_based_on_gpt2' 
+  - 'bert' - 'bert-base-multilingual-cased' 
+  - 'rubert' - 'DeepPavlov/rubert-base-cased' 
+Также регулирование степени сжатия текста: 
 
 ![Описание](visual/ai_selection.png)
 

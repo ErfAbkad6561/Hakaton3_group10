@@ -48,7 +48,8 @@
   - 'gpt' - 'sberbank-ai/rugpt3small_based_on_gpt2' 
   - 'bert' - 'bert-base-multilingual-cased' 
   - 'rubert' - 'DeepPavlov/rubert-base-cased' 
-Также регулирование степени сжатия текста: 
+
+  Также регулирование степени сжатия текста: 
 
 ![Описание](visual/ai_selection.png)
 
